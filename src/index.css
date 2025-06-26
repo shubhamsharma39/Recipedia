@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 👇 Custom global styles */
+body {
+  @apply bg-[#1C6C8D] text-white;
+}

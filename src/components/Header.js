@@ -1,71 +1,48 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import cartStore from '../utils/cartStore';
-import logo from "../assets/Foodigy-logo.webp";
+import logo from "../assets/recipedia-logo.png";
 import "../CSS/header.css";
 
 const Header = () => {
   const [btnText, setBtnText] = useState("Login");
-  const [ulDisplay, setUlDisplay] = useState("");
-  const [line1, setLine1] = useState("0deg");
-  const [gap, setGap] = useState("16px");
-  const [line3, setLine3] = useState("0deg");
+  const [isOpen, setIsOpen] = useState(false);
 
   const cartItems = useSelector((store) => store.cart.items);
-  // console.log(cartItems)
 
   const BtnTxt = () => {
     setBtnText((prev) => (prev === "LogOut" ? "Login" : "LogOut"));
   };
 
-  const navButton = () => {
-    ulDisplay === "flex" ? setUlDisplay("") : setUlDisplay("flex");
-
-    gap === "16px" ? setGap("8px") : setGap("16px");
-    line1 === "0deg" ? setLine1("410deg") : setLine1("0deg");
-    line3 === "0deg" ? setLine3("-410deg") : setLine3("0deg");
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <header className="flex  w-[100%] z-50 justify-between  shadow-xl  ">
-      <div className="logo   ">
-        <img src={logo} alt="logo" />
+    <header className="flex items-center justify-between px-4 py-3 shadow-md sticky top-0 z-50" style={{ backgroundColor: "#2A2A6C" }}>
+      {/* Logo */}
+      <div className="flex items-center">
+        <img src={logo} alt="Recipedia Logo" className="h-12 w-auto" />
       </div>
 
-      <div className="navLinks">
-        <ul style={{ display: ulDisplay }} className=" p-2 mr-2 gap-2  ">
-          <li className="px-2">
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li className="px-2">
-            <Link to={"/about"}>About US</Link>
-          </li>
-          <li className="px-2">
-            <Link to={"/contact"}>Contact US</Link>
-          </li>
-          <li className="px-2">
-            <Link to={"/cart"}>Cart({cartItems.length})</Link>
-          </li>
-          <li className="px-2">
-            <Link to={"/login"}>
-              <button className="loginBtn" onClick={BtnTxt}>
-                {btnText} <span className="online"> 🟢 </span>
-              </button>
-            </Link>
-          </li>
-          {/* {name} */}
-        </ul>
+      {/* Navigation Links */}
+      <nav className={`md:flex md:items-center gap-6 ${isOpen ? "flex flex-col absolute top-20 right-4 bg-white p-4 shadow-md rounded-md" : "hidden"} md:static`}>
+        <Link className="text-white hover:text-indigo-400 font-medium" to="/">Home</Link>
+        <Link className="text-white hover:text-indigo-400 font-medium" to="/about">About Us</Link>
+        <Link className="text-white hover:text-indigo-400 font-medium" to="/contact">Contact Us</Link>
+        <Link className="text-white hover:text-indigo-400 font-medium" to="/cart">Cart ({cartItems.length})</Link>
+        <Link to="/login">
+          <button onClick={BtnTxt} className="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-600 transition-all">
+            {btnText} <span className="inline-block ml-1">🟢</span>
+          </button>
+        </Link>
+      </nav>
 
-        <div
-          className="headerBtn"
-          style={{ gap: gap }}
-          onClick={() => navButton()}
-        >
-          <div className="line line1" style={{ rotate: line1 }}></div>
-
-          <div className="line line2" style={{ rotate: line3 }}></div>
-        </div>
+      {/* Hamburger Menu */}
+      <div className="md:hidden flex flex-col gap-[6px] cursor-pointer" onClick={toggleMenu}>
+        <div className={`h-[3px] w-6 bg-white transition-transform ${isOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+        <div className={`h-[3px] w-6 bg-white transition-opacity ${isOpen ? "opacity-0" : ""}`} />
+        <div className={`h-[3px] w-6 bg-white transition-transform ${isOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
       </div>
     </header>
   );

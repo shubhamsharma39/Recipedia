@@ -20,7 +20,7 @@ const AccordianContent = ({ data }) => {
       {data.map((i) => (
         <div
           key={i?.card?.info?.id}
-          className="bg-slate-200 font-medium rounded-xl flex flex-col sm:flex-row  min-h-44 justify-between px-1 sm:px-5 py-2 border-b border-solid border-black"
+          className="bg-Vivid Sky Blue -100 font-medium rounded-xl flex flex-col sm:flex-row  min-h-44 justify-between px-1 sm:px-5 py-2 border-b border-solid border-black"
         >
           <div className="info w-[100%] sm:w-9/12 px-1 sm:px-5 py-2 gap-1">
             <p className="font-bold text-lg">{i?.card?.info?.name}</p>

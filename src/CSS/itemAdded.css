@@ -1,5 +1,5 @@
 .itemAdded{
-    background-color: #FECB0F;
+    background-color: #20c4e4;
     animation: move .5s ease-in-out   forwards;
 }
 @keyframes move {

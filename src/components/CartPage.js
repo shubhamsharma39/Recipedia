@@ -13,13 +13,13 @@ const EmptyCart = ()=>{
         alt="Empty Cart" 
         className="max-w-xs md:max-w-md lg:max-w-lg h-auto mb-6" 
       />
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-1000 text-center">
         Your Cart is Empty
       </h1>
-      <p className="text-gray-600 text-center mt-4 mb-8 px-4 md:px-8 lg:px-16">
+      <p className="text-gray-1000 text-center mt-4 mb-8 px-4 md:px-8 lg:px-16">
         It looks like you haven't added any items to your cart yet. Start exploring our delicious menu and add your favorite dishes to your cart.
       </p>
-      <Link to={"/"} ><button className="bg-[#FECB0F]  text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
+      <Link to={"/"} ><button className="bg-[#6366F1]  text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
         Explore Menu
       </button></Link>
     </div>
@@ -37,7 +37,7 @@ const CartPage = () => {
 
   return cartItems.length ===0 ? <EmptyCart /> :<>
  
-  <button className='bg-[#FECB0F] absolute right-2 font-medium w-12  rounded-lg sm:w-20 h-8 sm:left-10 mt-5 cursor-pointer sm:font-bold' onClick={handleCartItem}>Clear</button>
+  <button className='bg-[#0F9DFF] absolute right-2 font-medium w-12  rounded-lg sm:w-20 h-8 sm:left-10 mt-5 cursor-pointer sm:font-bold' onClick={handleCartItem}>Clear</button>
      <div className='w-[95%] sm:w-8/12 m-auto'>  <AccordianContent data={cartItems}  /></div>
      
   </>

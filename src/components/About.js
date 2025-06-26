@@ -13,8 +13,8 @@ const About = () => {
       
       <div className="aboutInfo     font-bold   ">
        
-       "It's not just <span className=' text-white rounded-3xl bg-[#FECB0F]'>Food</span>, <br />
-        It's an <span className='  text-white rounded-3xl bg-[#FECB0F]'>Experience</span>"
+       "It's not just <span className=' text-white rounded-3xl bg-[#0F9DFF]'>Food</span>, <br />
+        It's an <span className='  text-white rounded-3xl bg-[#0F9DFF]'>Experience</span>"
 
         <Link to={"/"}> <button>View Menu</button> </Link>
         <Link to={"/contact"}  > <button className='table'>Book a Table</button> </Link>
