@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../CSS/categories.css";
 import CategoriesShimmer from "./CategoriesShimmer";
 
@@ -6,11 +6,8 @@ const Categories = () => {
   const [elements, setElements] = useState([]);
   const [slide, setSlide] = useState(0);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  
+  const fetchData = useCallback(async () => {
     const data = await fetch(
       "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
       {
@@ -20,20 +17,23 @@ const Categories = () => {
       }
     );
     const json = await data.json();
-    // console.log(json?.data?.cards[0]?.card?.card?.imageGridCards?.info)
-
     const imageGrids =
       json?.data?.cards[0]?.card?.card?.imageGridCards?.info || [];
     setElements(imageGrids);
-  };
+  }, []);
+
+  
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const next = () => {
-    if (elements.length - 7 == slide) return false;
+    if (elements.length - 7 === slide) return;  // ✅ eqeqeq fixed
     setSlide(slide + 1);
   };
 
   const previous = () => {
-    if (slide == 0) return false;
+    if (slide === 0) return;                    // ✅ eqeqeq fixed
     setSlide(slide - 1);
   };
 
@@ -50,13 +50,13 @@ const Categories = () => {
           <div className=" flex">
             <div
               className="btn sm:w-[40px] sm:h-[40px] bg-[#e2e2e7] rounded-full mx-2 flex justify-center items-center cursor-pointer "
-              onClick={() => previous()}
+              onClick={previous}
             >
               🔙
             </div>
             <div
               className="btn cursor-pointer sm:w-[40px] sm:h-[40px]   bg-[#e2e2e7] rounded-full mx-2 flex justify-center items-center "
-              onClick={() => next()}
+              onClick={next}
             >
               🔜
             </div>
