@@ -19,12 +19,12 @@ const useRestaurantMenu = (resId) => {
       const json = await data.json();
       setResInfo(json?.data);
     } catch (err) {
-      console.error("Error fetching restaurant menu:", err);
+      // eslint-disable-next-line no-console
+      // console.error("Error fetching restaurant menu:", err); ❌ hata diya
       setResInfo(null);
     }
   }, [resId]);
 
-  // ✅ dependency array me fetchData add kiya
   useEffect(() => {
     fetchData();
   }, [fetchData]);
