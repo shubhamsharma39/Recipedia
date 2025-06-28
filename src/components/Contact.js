@@ -21,9 +21,9 @@ const Contact = () => {
           toast.success("Message sent successfully!");
           form.current.reset();
         },
-        (error) => {
+        () => {
           toast.error("Failed to send message!");
-          console.error("EmailJS error:", error);
+          /* console.error removed to silence no-console warning */
         }
       );
   };
@@ -46,13 +46,18 @@ const Contact = () => {
             <h2 className="text-3xl font-bold text-gray-800 flex items-center justify-center gap-2">
               <FaUserEdit className="text-[#6366F1]" /> Contact&nbsp;Us
             </h2>
-            <p className="text-gray-500 text-sm mt-2">We'd love to hear from you!</p>
+            <p className="text-gray-500 text-sm mt-2">
+              We'd love to hear from you!
+            </p>
           </div>
 
           <form ref={form} onSubmit={sendEmail}>
             {/* Name */}
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-1">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-medium mb-1"
+              >
                 Name
               </label>
               <input
@@ -67,7 +72,10 @@ const Contact = () => {
 
             {/* Email */}
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-medium mb-1"
+              >
                 Email
               </label>
               <input
@@ -82,7 +90,10 @@ const Contact = () => {
 
             {/* Subject */}
             <div className="mb-4">
-              <label htmlFor="subject" className="block text-gray-700 font-medium mb-1">
+              <label
+                htmlFor="subject"
+                className="block text-gray-700 font-medium mb-1"
+              >
                 Subject
               </label>
               <input
@@ -97,7 +108,10 @@ const Contact = () => {
 
             {/* Message */}
             <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-700 font-medium mb-1">
+              <label
+                htmlFor="message"
+                className="block text-gray-700 font-medium mb-1"
+              >
                 Message
               </label>
               <textarea
@@ -107,7 +121,7 @@ const Contact = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-[#1D5C76] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                 placeholder="Your Message"
                 required
-              ></textarea>
+              />
             </div>
 
             {/* Submit */}
