@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -59,7 +59,7 @@
     "redux-mock-store": "^1.5.5",
     "tailwindcss": "^3.4.9"
   },
-  "description": "��#\u0000 \u0000R\u0000e\u0000c\u0000i\u0000p\u0000e\u0000d\u0000i\u0000a\u0000\r\u0000 \u0000",
+  "description": "Recipedia",
   "main": "babel.config.js",
   "keywords": [],
   "author": "",
